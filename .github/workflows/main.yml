@@ -1,0 +1,37 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      
+    - name: Setup Node.js environment
+      uses: actions/setup-node@v2.1.2
+      with:
+        version: 12
+
+    - name: GitHub Action for Yarn
+      uses: Borales/actions-yarn@v2.3.0
+      with:
+        cmd: install
+
+    - name: Creating React Build
+      run: yarn build --force
+      
+    - name: Creating StoryBook Build
+      run: yarn build-storybook -o ./story-build --force
+      
+    - name: Installing Surge
+      run: npm install -g surge
+      
+    - name: Deploying React on Surge
+      run: surge ./build http://task-box.surge.sh/ --token ${{secrets.SURGE_TOKEN}}
+      
+    - name: Deploying StoryBook on Surge
+      run: surge ./story-build http://task-box-storybook.surge.sh/ --token ${{secrets.SURGE_TOKEN}}
