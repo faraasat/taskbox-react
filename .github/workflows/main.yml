@@ -22,10 +22,10 @@ jobs:
         cmd: install
 
     - name: Creating React Build
-      run: npm run build
+      run: yarn build --force
       
     - name: Creating StoryBook Build
-      run: npm run build-storybook -o ./story-build
+      run: yarn build-storybook -o ./story-build --force
       
     - name: Installing Surge
       run: npm install -g surge
