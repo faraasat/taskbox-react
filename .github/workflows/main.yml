@@ -25,7 +25,7 @@ jobs:
       run: sudo yarn build --force
       
     - name: Creating StoryBook Build
-      run: sudo yarn build-storybook -o ./story-build --force
+      run: sudo yarn build-storybook -o ./story-build
       
     - name: Installing Surge
       run: npm install -g surge
