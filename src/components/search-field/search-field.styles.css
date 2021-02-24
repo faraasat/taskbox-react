@@ -1,0 +1,20 @@
+.search-field__defaults {
+    padding: 10px;
+    font-family: "Potta One", serif;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 5px;
+    border: 2px solid rgb(121, 206, 255);
+    outline: none;
+    color: rgb(160, 160, 160);
+}
+
+.search-field__defaults:hover {
+    border-color: rgb(255, 230, 121);
+}
+
+.search-field__defaults:active,
+.search-field__defaults:focus {
+    border-color: rgb(121, 255, 132);
+}
