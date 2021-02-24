@@ -16,7 +16,7 @@ const TaskComponent: React.FC<ITask> = ({
         <label className="task-item__checkbox">
           <input
             type="checkbox"
-            defaultChecked={state === "TASK_PINNED"}
+            defaultChecked={state === "TASK_ARCHIVED"}
             disabled={true}
             name="checked"
           />
@@ -38,7 +38,7 @@ const TaskComponent: React.FC<ITask> = ({
         className="task-item__actions"
         onClick={(event) => event.stopPropagation()}
       >
-        {state === "TASK_ARCHIVED" ? (
+        {state === "TASK_PINNED" ? (
           <span onClick={() => onPinnedTask(id)}>
             <StarIcon style={{ color: "#6db1ff" }} />
           </span>
