@@ -1,0 +1,105 @@
+.task-box__listings {
+
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  flex-direction: column;
+
+}
+
+
+
+.task-box__listings .task-list__available-items {
+
+  width: 100%;
+
+}
+
+
+
+.task-box__listings .task-box__title-wrapper {
+
+  font-family: 'Pacifico', cursive;
+
+  margin-block: 0em;
+
+  font-size: 35px;
+
+  font-weight: bold;
+
+  color: bisque;
+
+  text-shadow: 0px 0px 3px rgba(1, 1, 1, 1);
+
+}
+
+
+
+.inbox-screen__page__lists-show {
+
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  text-align: center;
+
+}
+
+
+
+.inbox-screen__page__lists-show svg {
+
+  color: rgb(187, 0, 0);
+
+  font-size: 65px;
+
+}
+
+
+
+.inbox-screen__page__lists-show .inbox-screen__title-message {
+
+  font-family: 'Pacifico', cursive;
+
+  font-size: 35px;
+
+  font-weight: bold;
+
+  color: sandybrown;
+
+  text-shadow: 0px 0px 3px rgba(1, 1, 1, 1);
+
+}
+
+
+
+.inbox-screen__page__lists-show .inbox-screen__subtitle-message {
+
+  font-family: 'Potta One', serif;
+
+  font-size: 25px;
+
+  font-weight: bold;
+
+  color: seashell;
+
+  text-shadow: 0px 0px 3px rgba(1, 1, 1, 1);
+
+}
+
+
+
+.task-box__add-field {
+
+  margin: 20px 0px;
+
+}
