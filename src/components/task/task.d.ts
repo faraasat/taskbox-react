@@ -7,7 +7,5 @@ export interface ITask {
     title: string;
     state: string;
   };
-  onArchiveTask?: any;
-  onPinnedTask?: any;
   className?: string;
 }

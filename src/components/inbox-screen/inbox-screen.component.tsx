@@ -1,7 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
-import { TaskListComponent } from "../task-list/task-list.component";
+import TaskListComponent from "../task-list/task-list.component";
 import { IInboxScreen } from "./inbox-screen";
+import "./inbox-screen.styles.css";
+import CancelIcon from "@material-ui/icons/Cancel";
+import InputFieldComponent from "../input-field/input-field.component";
 
 export const PureInboxScreen: React.FC<IInboxScreen> = ({
   error = null,
@@ -10,23 +13,26 @@ export const PureInboxScreen: React.FC<IInboxScreen> = ({
 }) => {
   if (error) {
     return (
-      <div className="page lists-show">
-        <div className="wrapper-message">
-          <span className="icon-face-sad" />
-          <div className="title-message">Oh no!</div>
-          <div className="subtitle-message">Something went wrong</div>
+      <div className="inbox-screen__page__lists-show">
+        <div className="inbox-screen__wrapper-message">
+          <CancelIcon />
+          <div className="inbox-screen__title-message">Oh no!</div>
+          <div className="inbox-screen__subtitle-message">
+            Something went wrong
+          </div>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="page lists-show">
+    <div className="task-box__listings">
       <nav>
-        <h1 className="title-page">
-          <span className="title-wrapper">Taskbox</span>
-        </h1>
+        <span className="task-box__title-page">
+          <span className="task-box__title-wrapper">Taskbox</span>
+        </span>
       </nav>
+      <InputFieldComponent className='task-box__add-field' />
       <TaskListComponent loading={loading} tasks={tasks} />
     </div>
   );

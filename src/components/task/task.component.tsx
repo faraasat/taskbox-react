@@ -3,13 +3,15 @@ import { ITask } from "./task";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
 import StarIcon from "@material-ui/icons/Star";
 import "./task.styles.css";
+import { archiveTask, pinTask } from "../../store/task.slice";
+import { useDispatch } from "react-redux";
 
 const TaskComponent: React.FC<ITask> = ({
   task: { id, title, state },
-  onArchiveTask,
-  onPinnedTask,
   className,
 }) => {
+  const dispatch = useDispatch();
+
   return (
     <div className={`${state} ${className} task-item`}>
       <div className="task-item__left">
@@ -22,16 +24,11 @@ const TaskComponent: React.FC<ITask> = ({
           />
           <span
             className="task-item__checkbox-custom"
-            onClick={() => onArchiveTask(id)}
+            onClick={() => dispatch(archiveTask(String(id)))}
           />
         </label>
         <div className="task-item__title">
-          <input
-            type="text"
-            value={title}
-            readOnly={true}
-            placeholder="Input title"
-          />
+          <input type="text" value={title} readOnly={true} />
         </div>
       </div>
       <div
@@ -39,11 +36,11 @@ const TaskComponent: React.FC<ITask> = ({
         onClick={(event) => event.stopPropagation()}
       >
         {state === "TASK_PINNED" ? (
-          <span onClick={() => onPinnedTask(id)}>
+          <span onClick={() => dispatch(pinTask(String(id)))}>
             <StarIcon style={{ color: "#6db1ff" }} />
           </span>
         ) : (
-          <span onClick={() => onPinnedTask(id)}>
+          <span onClick={() => dispatch(pinTask(String(id)))!}>
             <StarBorderIcon style={{ color: "#ff1d68" }} />
           </span>
         )}

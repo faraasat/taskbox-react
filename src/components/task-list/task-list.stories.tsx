@@ -1,20 +1,21 @@
+import { Provider } from "react-redux";
+import Store from "../../store/store";
 import * as TaskStories from "../task/task.stories";
 import { ITaskList } from "./task-list";
 import TaskListComponent from "./task-list.component";
-import { Provider } from "react-redux";
-import store from "../../store/store";
+import { Meta } from "@storybook/react/types-6-0";
 
 export default {
   component: TaskListComponent,
   title: "TaskList",
   decorators: [
     (story: any) => (
-      <Provider store={store}>
+      <Provider store={Store}>
         <div style={{ padding: "3rem" }}>{story()}</div>
       </Provider>
     ),
   ],
-};
+} as Meta;
 
 export const DefaultTaskList = (args: ITaskList) => {
   return <TaskListComponent {...args} />;
