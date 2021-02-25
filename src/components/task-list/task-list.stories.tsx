@@ -1,12 +1,18 @@
 import * as TaskStories from "../task/task.stories";
 import { ITaskList } from "./task-list";
 import TaskListComponent from "./task-list.component";
+import { Provider } from "react-redux";
+import store from "../../store/store";
 
 export default {
   component: TaskListComponent,
   title: "TaskList",
   decorators: [
-    (story: any) => <div style={{ padding: "3rem" }}>{story()}</div>,
+    (story: any) => (
+      <Provider store={store}>
+        <div style={{ padding: "3rem" }}>{story()}</div>
+      </Provider>
+    ),
   ],
 };
 

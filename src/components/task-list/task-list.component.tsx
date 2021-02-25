@@ -3,8 +3,10 @@ import TaskComponent from "../task/task.component";
 import { ITaskList } from "./task-list";
 import "./task-list.styles.css";
 import CheckIcon from "@material-ui/icons/Check";
+import { archiveTask, pinTask } from "../../store/store";
+import { connect } from "react-redux";
 
-const TaskListComponent: React.FC<ITaskList> = ({
+export const TaskListComponent: React.FC<ITaskList> = ({
   loading,
   tasks,
   onPinnedTask,
@@ -36,7 +38,7 @@ const TaskListComponent: React.FC<ITaskList> = ({
       </div>
     );
   }
-  if (tasks.length === 0) {
+  if (tasks.length !== 0 && loading === false) {
     return (
       <div className="task-list__none-items">
         <div className="task-list__wrapper-message">
@@ -50,7 +52,7 @@ const TaskListComponent: React.FC<ITaskList> = ({
 
   const tasksInOrder = [
     ...tasks.filter((t) => t.state === "TASK_PINNED"),
-    ...tasks.filter((t) => t.state !== "TASK_PINNED"),
+    ...tasks.filter((t) => t.state === "TASK_INBOX"),
   ];
 
   return (
@@ -62,4 +64,14 @@ const TaskListComponent: React.FC<ITaskList> = ({
   );
 };
 
-export default TaskListComponent;
+export default connect(
+  ({ tasks }: any) => ({
+    tasks: tasks.filter(
+      (t: any) => t.state === "TASK_INBOX" || t.state === "TASK_PINNED"
+    ),
+  }),
+  (dispatch) => ({
+    onArchiveTask: (id: any) => dispatch(archiveTask(id)),
+    onPinTask: (id: any) => dispatch(pinTask(id)),
+  })
+)(TaskListComponent);
